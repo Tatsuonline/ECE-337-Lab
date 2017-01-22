@@ -1,0 +1,20 @@
+===== Timer Pseudocode =====
+
+if (start_found == 1):
+	if (rising_edge_found == 1):
+		i = i + 1;
+	if (i == 8):
+		byte_received = 1;
+		readyForAck = 1; // Temporary register
+	if (readyForAck == 1 && falling_edge_found == 1):
+		ack_prep = 1;
+		readyForAck = 2; // Temporary register
+	if (readyForAck == 2 && rising_edge_found == 1):
+		check_ack = 1;
+		readyForAck = 3; // Temporary register
+	if (readyForAck == 3 && falling_edge_found == 1):
+		ack_done = 1;
+		readyForAck = 0; // Temporary register
+
+if (stop_found == 1):
+	goto idle_state;

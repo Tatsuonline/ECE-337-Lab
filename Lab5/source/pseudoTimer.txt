@@ -1,0 +1,15 @@
+===================Pseudocode for Timer Block===================
+
+rollover1 = 10;
+rollover2 = 9;
+
+if enable_timer == 1:
+	
+	always @ (clock)
+		increment cycle_count;
+
+		if cycle_count == rollover1:
+			increment packet_count;
+
+		if packet_count == rollover2:
+			packet_done = 1;
